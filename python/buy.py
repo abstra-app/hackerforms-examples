@@ -1,5 +1,5 @@
 """
-This scripts is used in HackerForms (https://hackerforms.com) to collect buying intentions.
+This scripts is used in Abstra Cloud (https://abstracloud.com) to collect buying intentions.
 This is a good example on how using Python scripts can be much simpler than forms + external automations
 """
 
