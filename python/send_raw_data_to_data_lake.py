@@ -1,3 +1,9 @@
+"""
+Data lakes are an incresingly popular and cost-effective data storage solution.
+This example sends contact info from Hubspot's CRM to a data lake in S3.
+With our scheduler, bring all your data together automatically.
+"""
+
 import json
 import os
 import boto3
