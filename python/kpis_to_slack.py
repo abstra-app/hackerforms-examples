@@ -1,5 +1,6 @@
 """
 We use this script to send weekly KPIs from Metabase to our team's Slack channel.
+Just paste it into Jobs and get the whole team updated on key metrics.
 """
 
 import requests
