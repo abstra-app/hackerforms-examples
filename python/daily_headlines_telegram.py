@@ -1,3 +1,8 @@
+"""
+Create a Job to stay up-to-date on top headlines. Just paste this code.
+Web scraping + delivering made easy with our scheduler.
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import telepot
