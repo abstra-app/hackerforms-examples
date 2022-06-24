@@ -1,5 +1,5 @@
 """
-This example shows how to easiily create your own marketplace with Forms.
+This example shows how to easily create your own marketplace with Forms.
 Use requests to your fav database to populate multiple choices and cards, and send everything right back. You're good to go!
 """
 
