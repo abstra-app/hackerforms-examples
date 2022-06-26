@@ -8,6 +8,8 @@ import numpy as np
 import psycopg2.extras as extras
 import pandas as pd
 
+# This form uses environment variables. To make it work properly, add your keys to your workspace's environment variables in the sidebar.
+
 #DB Creds 1:
 user_1 = os.environ.get("DB_USER")
 password_1 = os.environ.get("DB_PASSWORD")
