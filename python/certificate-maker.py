@@ -4,13 +4,16 @@ from datetime import datetime
 import pandas as pd
 from zipfile import ZipFile
 
+# This form tries to access files in this workspace's file system. To make this form work, add a file with this name to your workspace's file system in the sidebar.
 doc = DocxTemplate("certificate.docx")
 
 display("Welcome to our Certificate Maker!", button_text = "Let's get started")
 
 multiple = read_multiple_choice("Do you want to generate a single certificate or multiple, from a spreadsheet?",
                                 [{"label": "single","value": False},
-                                 {"label": "multiple","value": True}])
+                                 {"label": "multiple","value": True}],
+                                button_text = None,
+                               )
 
 if multiple == False:
   course = read("What is the course name?")
@@ -29,6 +32,7 @@ if multiple == False:
         .display_file(f)\
         .run("Finish")
 else:
+  # This form tries to access files in this workspace's file system. To make this form work, add a file with this name to your workspace's file system in the sidebar.
   f = open('certificates_template.xlsx', 'rb')
   Page().display("Ok! Start by downloading and filling out this spreadsheet with the details.")\
         .display_file(f)\
