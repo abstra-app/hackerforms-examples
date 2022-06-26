@@ -17,6 +17,7 @@ name = read("Name")
 email = read_email('Email')
 company = read("Company name")
 
+# This form uses an environment variable. To make it work properly, add an API Key to your workspace's environment variables in the sidebar.
 token = os.environ.get("SLACK_BOT_TOKEN")
 
 res = requests.post(
