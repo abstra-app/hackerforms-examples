@@ -6,6 +6,10 @@ Use requests to your fav database to populate multiple choices and cards, and se
 from hackerforms import *
 import requests
 import json
+import os
+
+# This form uses an environment variable. To make it work properly, add an Airtable API Key to your workspace's environment variables in the sidebar.
+api_key = os.environ['AIRTABLE_MARKETPLACE_API_KEY']
 
 def who():
     who = read_multiple_choice("What are you looking for today?", [
@@ -43,7 +47,7 @@ def list_services():
     skills = read_textarea("What are your main skills?")
 
     endpoint = "https://INSERT_API_ENDPOINT_HERE.com"
-    head = {"Authorization": "API_KEY", "Content-Type": "application/json"}
+    head = {"Authorization": "Bearer " + api_key, "Content-Type": "application/json"}
     info = {"records": [
             {
             "fields": {
@@ -67,7 +71,7 @@ def list_services():
     )
 
 def view_job_cards(endpoint):
-        head = {"Authorization": "API_KEY", "Content-Type": "application/json"}
+        head = {"Authorization": "Bearer " + api_key, "Content-Type": "application/json"}
         res = requests.get(url = endpoint, headers = head)
         data = res.json()
         data_records = data['records']
@@ -146,7 +150,7 @@ def list_job():
     skills = read_textarea("What the main skills required?")
 
     endpoint = "https://INSERT_API_ENDPOINT_HERE.com"
-    head = {"Authorization": "API_KEY", "Content-Type": "application/json"}
+    head = {"Authorization": "Bearer " + api_key, "Content-Type": "application/json"}
     info = {"records": [
             {
             "fields": {
@@ -171,7 +175,7 @@ def list_job():
     )
 
 def view_dev_cards(endpoint):
-    head = {"Authorization": "API_KEY", "Content-Type": "application/json"}
+    head = {"Authorization": "Bearer " + api_key, "Content-Type": "application/json"}
     res = requests.get(url = endpoint, headers = head)
     data = res.json()
     data_records = data['records']
