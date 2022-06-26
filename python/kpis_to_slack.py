@@ -9,6 +9,8 @@ from datetime import datetime, timedelta
 from tabulate import tabulate
 
 # get KPIs from Metabase
+
+# This form uses an environment variable. To make it work properly, add a Metabase API Key to your workspace's environment variables in the sidebar.
 metabase_token = os.environ.get("METABASE_TOKEN")
 
 res = requests.post('https://metabase.YOUR_ENDPOINT/api/card/1/query/json', 
@@ -28,6 +30,8 @@ df_week = df[df_datetime > week]
 message = pd.DataFrame.to_markdown(df_week)
 
 # send to Slack
+
+# This form uses an environment variable. To make it work properly, add a Slack API Key to your workspace's environment variables in the sidebar.
 slack_token = os.environ.get("SLACK_TOKEN")
 
 res = requests.post(
