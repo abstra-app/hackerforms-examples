@@ -10,6 +10,7 @@ import boto3
 from datetime import datetime, timedelta
 import requests
 
+# This form uses an environment variable. To make it work properly, add a Hubspot API Key to your workspace's environment variables in the sidebar.
 token = os.environ.get("HUBSPOT_TOKEN")
 
 bucket_name = 'data-lake-raw-data'
@@ -74,6 +75,7 @@ with open(contacts_filename, 'w') as outfile:
 #Save files
 def upload_to_aws(bucket_name,folder_name, s3_file):
     s3 = boto3.resource('s3',
+                      # This form uses an environment variable. To make it work properly, add a AWS API Key to your workspace's environment variables in the sidebar.
                       aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'],
                       aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
                       region_name='us-east-1')
