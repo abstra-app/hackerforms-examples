@@ -13,15 +13,15 @@ from tabulate import tabulate
 # This form uses an environment variable. To make it work properly, add a Metabase API Key to your workspace's environment variables in the sidebar.
 metabase_token = os.environ.get("METABASE_TOKEN")
 
-res = requests.post('https://metabase.YOUR_ENDPOINT/api/card/1/query/json', 
-              headers = {'Content-Type': 'application/json',
-                        'X-Metabase-Session': metabase_token
-                        }
-            )
+res = requests.post('https://metabase.YOUR_ENDPOINT/api/card/1/query/json',
+                    headers={'Content-Type': 'application/json',
+                             'X-Metabase-Session': metabase_token
+                             }
+                    )
 
 df = pd.DataFrame(res.json())
 
-week = datetime.today() - timedelta(days = 7)
+week = datetime.today() - timedelta(days=7)
 
 df_datetime = pd.to_datetime(df['Signup date'], format='%Y-%m-%d')
 
@@ -35,7 +35,7 @@ message = pd.DataFrame.to_markdown(df_week)
 slack_token = os.environ.get("SLACK_TOKEN")
 
 res = requests.post(
-        'https://slack.com/api/chat.postMessage',
+    'https://slack.com/api/chat.postMessage',
     json={
         'channel': 'general',
         'text': 'New users this week:\n' + message

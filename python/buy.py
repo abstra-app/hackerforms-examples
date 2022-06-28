@@ -8,11 +8,12 @@ from requests import post
 import os
 
 if 'plan' in url_params:
-  plan = url_params['plan']
+    plan = url_params['plan']
 else:
-  plan = 'standard'
+    plan = 'standard'
 
-display("Thank you for showing interest in our " + plan + " plan. We need some informations to get in touch.")
+display("Thank you for showing interest in our " + plan +
+        " plan. We need some informations to get in touch.")
 name = read("Name")
 email = read_email('Email')
 company = read("Company name")
@@ -21,7 +22,7 @@ company = read("Company name")
 token = os.environ.get("SLACK_BOT_TOKEN")
 
 res = requests.post(
-        'https://slack.com/api/chat.postMessage',
+    'https://slack.com/api/chat.postMessage',
     json={
         'channel': 'sales',
         'text': name + ' (' + email + ') wants to buy the ' + plan + ' plan'
