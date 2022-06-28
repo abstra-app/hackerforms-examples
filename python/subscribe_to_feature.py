@@ -1,5 +1,4 @@
 from hackerforms import *
-from hackerforms import *
 import requests
 import os
 
@@ -7,8 +6,8 @@ import os
 api_key = os.environ['HUBSPOT_API_KEY']
 
 if not api_key:
-  display("Please, add an  API key to use this form")
-  exit(0)
+    display("Please, add an  API key to use this form")
+    exit(0)
 
 display("Hi there. Thanks for your interest in our upcoming features!")
 
@@ -23,37 +22,39 @@ email = read("Great! What's your email?")
 # Create contact in Hubspot
 
 endpoint = "https://api.hubapi.com/contacts/v1/contact"
-head = {"Authorization": "Bearer " + api_key, "Content-Type": "application/json"}
+head = {"Authorization": "Bearer " + api_key,
+        "Content-Type": "application/json"}
 info = json.dumps({
-  "properties": [
-    {
-      "property": "email",
-      "value": email
-    },
-    {
-      "property": "firstname",
-      "value": fname
-    },
-    {
-      "property": "lastname",
-      "value": lname
-    },
-  ]
+    "properties": [
+        {
+            "property": "email",
+            "value": email
+        },
+        {
+            "property": "firstname",
+            "value": fname
+        },
+        {
+            "property": "lastname",
+            "value": lname
+        },
+    ]
 })
 
-r = requests.post(url = endpoint, data = info, headers = head)
+r = requests.post(url=endpoint, data=info, headers=head)
 
 # Add contact to list
 
 endpoint = "https://api.hubapi.com/contacts/v1/lists/1/add"
-head = {"Authorization": "Bearer " + api_key, "Content-Type": "application/json"}
+head = {"Authorization": "Bearer " + api_key,
+        "Content-Type": "application/json"}
 emails = json.dumps({
-        "emails": [
-         email
-        ]
-        },
-      )
+    "emails": [
+        email
+    ]
+},
+)
 
-r = requests.post(url = endpoint, data = emails, headers = head)
+r = requests.post(url=endpoint, data=emails, headers=head)
 
 display(f"All set, {fname}! You'll be notified as soon as we launch 😎🚀")
