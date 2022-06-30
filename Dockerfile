@@ -12,8 +12,8 @@ RUN ln -sf python3 /usr/bin/python && ln -sf pip3 /usr/bin/pip
 RUN pip install --no-cache-dir --upgrade pip
 RUN python -m venv $VIRTUAL_ENV
 
-RUN pip install --no-cache-dir abstra-cli
 COPY ./python ./python
+RUN pip install --no-cache-dir abstra-cli
 
 ARG EXAMPLES_WORKSPACE_API_TOKEN
 ENV ABSTRA_API_TOKEN $EXAMPLES_WORKSPACE_API_TOKEN
