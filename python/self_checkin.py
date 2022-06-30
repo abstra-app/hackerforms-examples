@@ -14,12 +14,12 @@ if not 'AIRTABLE_API_KEY' in os.environ:
 api_key = os.environ['AIRTABLE_API_KEY']
 
 fname = read(
-    "Welcome to Dr.Pete's! Let's get started. What is your first name?") or ''
+    "Welcome to Dr.Pete's! Let's get started. What is your first name?")
 
-lname = read('What is your last name?') or ''
+lname = read('What is your last name?')
 
 minitial = read(
-    'What is your middle initial? If you have no middle initial, leave blank.') or ''
+    'What is your middle initial? If you have no middle initial, leave blank.', required = False) or ''
 
 name = fname+' '+minitial+' '+lname
 
