@@ -7,6 +7,16 @@ from hackerforms import *
 from requests import post
 import os
 
+if not 'SLACK_BOT_TOKEN' in os.environ:
+    Page().display("Hmmm seems like you forgot to set your API key. An error will appear on the log tab.") \
+          .display_link("https://www.abstracloud.com/examples/buying-intention-form", link_text="Click here to see the working example") \
+          .run("Next")
+    raise ValueError("Try adding your API key for this script to work")
+    exit()
+
+# This form uses an environment variable. To make it work properly, add a Slack API Key to your workspace's environment variables in the sidebar.
+token = os.environ.get("SLACK_BOT_TOKEN")
+
 if 'plan' in url_params:
     plan = url_params['plan']
 else:
@@ -17,9 +27,6 @@ display("Thank you for showing interest in our " + plan +
 name = read("Name")
 email = read_email('Email')
 company = read("Company name")
-
-# This form uses an environment variable. To make it work properly, add a Slack API Key to your workspace's environment variables in the sidebar.
-token = os.environ.get("SLACK_BOT_TOKEN")
 
 res = requests.post(
     'https://slack.com/api/chat.postMessage',
