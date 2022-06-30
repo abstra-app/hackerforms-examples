@@ -6,6 +6,13 @@ import pandas as pd
 from dateutil import relativedelta
 import os
 
+if not 'TABLES_INV_GET_ASSIGNOR_INFO' in os.environ:
+    Page().display("Hmmm seems like you forgot to set your API key. An error will appear on the log tab.") \
+          .display_link("https://www.abstracloud.com/examples/invoice-factoring-calculator", link_text="Click here to see the working example") \
+          .run("Next")
+    raise ValueError("Try adding your API key for this script to work")
+    exit()
+
 display("Hi! Welcome to our Invoice Factoring Calculator.",
         button_text="Let's get started")
 
@@ -55,7 +62,7 @@ r = relativedelta.relativedelta(end_date, today_date)
 
 # check if enough credit in monthly credit limit
 
-# This form uses an environment variable. To make it work properly, add an Airtable API Key to your workspace's environment variables in the sidebar.
+# This form uses an environment variable. To make it work properly, add an API Key to your workspace's environment variables in the sidebar.
 key2 = os.environ['TABLES_INV_GET_SUPPLIER_INFO']
 
 # get supplier list from db
@@ -71,7 +78,7 @@ chosen_supplier = read_dropdown(
     ]
 )
 
-# This form uses an environment variable. To make it work properly, add an Airtable API Key to your workspace's environment variables in the sidebar.
+# This form uses an environment variable. To make it work properly, add an API Key to your workspace's environment variables in the sidebar.
 key3 = os.environ['TABLES_INF_GET_SUPPLIER_DETAILS']
 
 # get supplier details from selection
