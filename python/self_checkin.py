@@ -3,12 +3,15 @@ import requests
 import json
 import os
 
+if not 'AIRTABLE_API_KEY' in os.environ:
+    Page().display("Hmmm seems like you forgot to set your API key. An error will appear on the log tab.") \
+          .display_link("https://console.abstracloud.com", link_text="Click here to see the working example") \
+          .run("Next")
+    raise ValueError("Try adding your API key for this script to work")
+    exit()
+
 # This form uses an environment variable. To make it work properly, add an Airtable API Key to your workspace's environment variables in the sidebar.
 api_key = os.environ['AIRTABLE_API_KEY']
-
-if not api_key:
-    display("Please, add an API key to use this form")
-    exit(0)
 
 fname = read(
     "Welcome to Dr.Pete's! Let's get started. What is your first name?") or ''
@@ -70,7 +73,7 @@ address = address_street+' ' + \
 phone = read_phone("What is your primary phone number?")
 
 id_type = read_multiple_choice("What type of identification can you provide?",
-                               ["passport", "driver's license", "student ID"])
+                            ["passport", "driver's license", "student ID"])
 
 id_number = read("What is the identification number?")
 
@@ -86,7 +89,7 @@ height = read_number("What is your height, in centimeters?")
 under_care = read_multiple_choice(
     "Are you under a physician's care now?",
     [{"label": "yes", "value": True},
-     {"label": "no", "value": False}]
+    {"label": "no", "value": False}]
 )
 
 if under_care == True:
@@ -98,7 +101,7 @@ else:
 hospitalized = read_multiple_choice(
     "Have you ever been hospitalized or had a major injury?",
     [{"label": "yes", "value": True},
-     {"label": "no", "value": False}]
+    {"label": "no", "value": False}]
 )
 
 if hospitalized == True:
@@ -109,7 +112,7 @@ else:
 medicated = read_multiple_choice(
     "Are you taking any medication?",
     [{"label": "yes", "value": True},
-     {"label": "no", "value": False}]
+    {"label": "no", "value": False}]
 )
 
 if medicated == "yes":
@@ -121,7 +124,7 @@ else:
 diet = read_multiple_choice(
     "Are you on a special diet?",
     [{"label": "yes", "value": True},
-     {"label": "no", "value": False}]
+    {"label": "no", "value": False}]
 )
 
 if diet == True:
@@ -132,19 +135,19 @@ else:
 smoker = read_multiple_choice(
     "Do you smoke?",
     [{"label": "yes", "value": True},
-     {"label": "no", "value": False}]
+    {"label": "no", "value": False}]
 )
 
 drinker = read_multiple_choice(
     "Do you consume alcohol regularly?",
     [{"label": "yes", "value": True},
-     {"label": "no", "value": False}]
+    {"label": "no", "value": False}]
 )
 
 pregnant_trying = read_multiple_choice(
     "Are you pregnant or trying to get pregnant?",
     [{"label": "yes", "value": True},
-     {"label": "no", "value": False}]
+    {"label": "no", "value": False}]
 )
 
 allergies = read_multiple_choice(
@@ -155,7 +158,7 @@ allergies = read_multiple_choice(
 
 if "other" in allergies:
     allergies_other = read("What other allergies do you have?"
-                           )
+                        )
 else:
     allergies_other = ""
 
