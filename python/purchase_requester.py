@@ -4,6 +4,13 @@ import json
 from datetime import datetime
 import os
 
+if not 'TABLES_PUR_GET_BUDGET' in os.environ:
+    Page().display("Hmmm seems like you forgot to set your API key. An error will appear on the log tab.") \
+          .display_link("https://www.abstracloud.com/examples/purchase-requester", link_text="Click here to see the working example") \
+          .run("Next")
+    raise ValueError("Try adding your API key for this script to work")
+    exit()
+
 display("Hi! Welcome to our Purchase Requester.",
         button_text="Let's get started")
 
