@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 from urllib.parse import urlencode, quote_plus
 
-if not 'API_KEY' in os.environ:
+if not 'AIRTABLE_VACATION_API_KEY' in os.environ:
     Page().display("Hmmm seems like you forgot to set your API key. An error will appear on the log tab.") \
           .display_link("https://www.abstracloud.com/examples/vacation-approval", link_text="Click here to see the working example") \
           .run("Next")
@@ -13,7 +13,7 @@ if not 'API_KEY' in os.environ:
     exit()
 
 # This form uses an environment variable. To make it work properly, add an Airtable API Key to your workspace's environment variables in the sidebar.
-api_key = os.environ['API_KEY']
+api_key = os.environ['AIRTABLE_VACATION_API_KEY']
 
 display("Hi there! You have a new vacation request.",
         button_text="Let's see")
