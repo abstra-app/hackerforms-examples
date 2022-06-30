@@ -4,6 +4,8 @@ from datetime import datetime
 import pandas as pd
 from zipfile import ZipFile
 
+display("Quick tip before we begin: make sure you have the correct file in your workspace's file system.")
+
 # This form tries to access files in this workspace's file system. To make this form work, add a file with this name to your workspace's file system in the sidebar.
 doc = DocxTemplate("certificate.docx")
 
