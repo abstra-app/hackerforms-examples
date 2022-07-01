@@ -115,7 +115,7 @@ medicated = read_multiple_choice(
     {"label": "no", "value": False}]
 )
 
-if medicated == "yes":
+if medicated == True:
     reason_medicated = read_textarea(
         "Please provide reasons, names and dosages of all medication.")
 else:
