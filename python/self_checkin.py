@@ -13,6 +13,14 @@ if not 'AIRTABLE_API_KEY' in os.environ:
 # This form uses an environment variable. To make it work properly, add an Airtable API Key to your workspace's environment variables in the sidebar.
 api_key = os.environ['AIRTABLE_API_KEY']
 
+if not 'CHECKIN_TABLE_URL' in os.environ:
+    Page().display("Hmmm seems like you forgot to set your Table URL. An error will appear on the log tab.") \
+          .display_link("https://www.abstracloud.com/examples/self-check-in", link_text="Click here to see the working example") \
+          .run("Next")
+    raise ValueError("Try adding your Table URL for this script to work")
+    exit()
+table_endpoint = os.environ['CHECKIN_TABLE_URL']
+
 fname = read(
     "Welcome to Dr.Pete's! Let's get started. What is your first name?")
 
@@ -211,7 +219,7 @@ data = {"records": [
             "City": str(city)
         }}
 ]}
-url = 'https://INSERT_API_ENDPOINT_HERE.com'
+url = table_endpoint
 response = requests.post(url, json=data, headers=head)
 
 display(f"Thanks, {name}! You're checked in and ready to go.")
