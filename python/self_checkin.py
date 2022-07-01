@@ -29,7 +29,7 @@ lname = read('What is your last name?')
 minitial = read(
     'What is your middle initial? If you have no middle initial, leave blank.', required = False) or ''
 
-name = fname+' '+minitial+' '+lname
+name = fname+' '+minitial+' '+lname if minitial else fname+' '+lname
 
 email = read("Ok. What is your email?")
 
