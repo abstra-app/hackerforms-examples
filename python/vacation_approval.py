@@ -19,7 +19,7 @@ display("Hi there! You have a new vacation request.",
         button_text="Let's see")
 
 # Retrieve request from your database
-endpoint = "https://INSERT_API_ENDPOINT_HERE.com"
+endpoint = os.environ['AIRTABLE_VACATION_API_URL']
 head = {"Authorization": "Bearer " + api_key}
 data = requests.get(url=endpoint, headers=head)
 data = data.json()
@@ -61,7 +61,6 @@ if approve == True:
     calendar_url = "https://calendar.google.com/calendar/render?action=TEMPLATE&" + \
         urlencode(calendar_properties, quote_via=quote_plus)
 
-    endpoint = "https://INSERT_API_ENDPOINT_HERE.com"
     head = {"Authorization": "Bearer " + api_key,
             "Content-Type": "application/json"}
     info = {"fields": {
@@ -76,7 +75,6 @@ if approve == True:
 elif approve == False:
     comment = read_textarea("Please tell us why the request was denied:")
 
-    endpoint = "https://INSERT_API_ENDPOINT_HERE.com"
     head = {"Authorization": "Bearer " + api_key,
             "Content-Type": "application/json"}
     info = {"fields": {
