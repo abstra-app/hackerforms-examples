@@ -28,7 +28,7 @@ name = read("Name")
 email = read_email('Email')
 company = read("Company name")
 
-res = requests.post(
+res = post(
     'https://slack.com/api/chat.postMessage',
     json={
         'channel': 'sales',
