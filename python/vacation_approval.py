@@ -71,7 +71,7 @@ if approve == True:
 
     display("We've registered your approval successfully!")
     display_link(
-        calendar_url, f"Click here to add {name}'s vacation to your calendar")
+        calendar_url, link_text = f"Click here to add {name}'s vacation to your calendar")
 elif approve == False:
     comment = read_textarea("Please tell us why the request was denied:")
 
