@@ -134,13 +134,13 @@ def view_job_board():
         if filter_choice == "Seniority needed":
             seniority_filter = read_dropdown("What is your seniority?", [
                                              "Intern/Trainee", "Junior", "Mid-level", "Senior", "Leader"])
-            endpoint = jobs_endpoint + '?filterByFormula=Seniority+needed+%3D+' + seniority_filter
+            endpoint = jobs_endpoint + '?filterByFormula=%7BSeniority%20needed%7D%3D%27' + seniority_filter + '%27'
             view_job_cards(endpoint)
 
         elif filter_choice == "Hourly rate":
             hourly_rate_filter = read(
                 "What's the minimum hourly rate you want?")
-            endpoint = jobs_endpoint + '?filterByFormula=Hourly+rate+%3D+' + hourly_rate_filter
+            endpoint = jobs_endpoint + '?filterByFormula=%7BHourly%20rate%7D%3D%27' + hourly_rate_filter + '%27'
             view_job_cards(endpoint)
 
 
@@ -247,13 +247,13 @@ def view_dev_board():
         if filter_choice == "Seniority":
             seniority_filter = read_dropdown("What is the seniority needed?", [
                                              "Intern/Trainee", "Junior", "Mid-level", "Senior", "Leader"])
-            endpoint = devs_endpoint + '?filterByFormula=Seniority+needed+%3D+' + seniority_filter
+            endpoint = devs_endpoint + '?filterByFormula=%7BSeniority%20needed%7D%3D%27' + seniority_filter + '%27'
             view_dev_cards(endpoint)
 
         elif filter_choice == "Hourly rate":
             hourly_rate_filter = read(
                 "What's the maximum hourly rate you're willing to pay?")
-            endpoint = devs_endpoint + '?filterByFormula=Hourly+rate+%3D+' + hourly_rate_filter
+            endpoint = devs_endpoint +'?filterByFormula=%7BHourly%20rate%7D%3D%27' + hourly_rate_filter + '%27'
             view_dev_cards(endpoint)
 
 
