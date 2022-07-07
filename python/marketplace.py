@@ -17,7 +17,8 @@ if not 'AIRTABLE_MARKETPLACE_API_KEY' in os.environ:
 
 # This form uses an environment variable. To make it work properly, add an Airtable API Key to your workspace's environment variables in the sidebar.
 api_key = os.environ['AIRTABLE_MARKETPLACE_API_KEY']
-
+devs_endpoint = os.environ['AIRTABLE_MARKETPLACE_DEVS_URL']
+jobs_endpoint = os.environ['AIRTABLE_MARKETPLACE_JOBS_URL']
 
 def who():
     who = read_multiple_choice("What are you looking for today?", [
@@ -57,7 +58,7 @@ def list_services():
         "What many available hours do you have per week?")
     skills = read_textarea("What are your main skills?")
 
-    endpoint = "https://INSERT_API_ENDPOINT_HERE.com"
+    endpoint = devs_endpoint
     head = {"Authorization": "Bearer " + api_key,
             "Content-Type": "application/json"}
     info = {"records": [
@@ -123,7 +124,7 @@ def view_job_board():
     ])
 
     if action == "everything":
-        endpoint = "https://INSERT_API_ENDPOINT_HERE.comw"
+        endpoint = jobs_endpoint
         view_job_cards(endpoint)
 
     elif action == "filtered":
@@ -133,13 +134,13 @@ def view_job_board():
         if filter_choice == "Seniority needed":
             seniority_filter = read_dropdown("What is your seniority?", [
                                              "Intern/Trainee", "Junior", "Mid-level", "Senior", "Leader"])
-            endpoint = "https://INSERT_FILTERED_API_ENDPOINT_HERE.com"
+            endpoint = jobs_endpoint + '?filterByFormula=Seniority+needed+%3D+' + seniority_filter
             view_job_cards(endpoint)
 
         elif filter_choice == "Hourly rate":
             hourly_rate_filter = read(
                 "What's the minimum hourly rate you want?")
-            endpoint = "https://INSERT_FILTERED_API_ENDPOINT_HERE.com"
+            endpoint = jobs_endpoint + '?filterByFormula=Hourly+rate+%3D+' + hourly_rate_filter
             view_job_cards(endpoint)
 
 
@@ -169,7 +170,7 @@ def list_job():
     availability = read_number("How many hours are needed per week?")
     skills = read_textarea("What the main skills required?")
 
-    endpoint = "https://INSERT_API_ENDPOINT_HERE.com"
+    endpoint = jobs_endpoint
     head = {"Authorization": "Bearer " + api_key,
             "Content-Type": "application/json"}
     info = {"records": [
@@ -236,7 +237,7 @@ def view_dev_board():
     ])
 
     if action == "everything":
-        endpoint = "https://INSERT_API_ENDPOINT_HERE.com"
+        endpoint = devs_endpoint
         view_dev_cards(endpoint)
 
     elif action == "filtered":
@@ -246,13 +247,13 @@ def view_dev_board():
         if filter_choice == "Seniority":
             seniority_filter = read_dropdown("What is the seniority needed?", [
                                              "Intern/Trainee", "Junior", "Mid-level", "Senior", "Leader"])
-            endpoint = "https://INSERT_FILTERED_API_ENDPOINT_HERE.com"
+            endpoint = devs_endpoint + '?filterByFormula=Seniority+needed+%3D+' + seniority_filter
             view_dev_cards(endpoint)
 
         elif filter_choice == "Hourly rate":
             hourly_rate_filter = read(
                 "What's the maximum hourly rate you're willing to pay?")
-            endpoint = "https://INSERT_FILTERED_API_ENDPOINT_HERE.com"
+            endpoint = devs_endpoint + '?filterByFormula=Hourly+rate+%3D+' + hourly_rate_filter
             view_dev_cards(endpoint)
 
 
