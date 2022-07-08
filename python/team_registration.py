@@ -5,7 +5,6 @@ from datetime import datetime
 
 #Here you can add your company's authentication.
 #user = get_user()
-
 #if not user.email.endswith('@mycompany.com'):
   #exit()
 
@@ -77,9 +76,7 @@ if registration == "new_member":
 
     # Here you'll need to set your database's query statement in order to properly update it
     # We'll continue this example without doing so to keep the data stable
-
     # team_statement = tables.statement(id="your_statement_id")
-
     # result = team_statement.run(params={"name": name, "email": personal_email, "created_at": start_date,\
     #                                     "position": position, "birth_date": birth_date, "phone_number": phone_number,\
     #                                     "identification_number": id_number, "id_emited_by": id_emited_by,\
@@ -87,7 +84,6 @@ if registration == "new_member":
     #                                     "state": state, "city": city, "address": address, "number_address": number_address,\
     #                                     "complement_address": complement_address, "district": district, "zip_code": zip_code,\
     #                                     "shirt_size": shirt_size, "dietary_restrictions": dietary_restrictions})
-
 
     # bank_statement = tables.statement(id="your_statement_id")
     # bank_statement.run(params={"bank_name": bank_name, "number": bank_account_number,\
@@ -106,7 +102,6 @@ if registration == "new_member":
 elif registration == "update_member":
 
     team_informations = convert_db_to_dropdown_format("name", "id", "9952fc39-7f93-470d-b2a4-2f846d0d290a")
-    
     team_member_id = read_dropdown("Which member of team do you want to update data on?", team_informations)
 
     member = Page().display("Perfect. Please update the information you need below:")\
@@ -144,7 +139,6 @@ elif registration == "update_member":
                 .read_date("Departure date", required=False)\
                 .run("Send")
 
-
     personal_email, start_date, position, birth_date, phone_number, id_number,\
     id_emited_by, id_taxpayer, company_email, country, state, city, address, number_address,\
     complement_address, district, zip_code, bank_name, bank_account_number, bank_branch_code, legal_entity_number,\
@@ -159,9 +153,7 @@ elif registration == "update_member":
 
     # Here you'll need to set your database's query statement in order to properly update it
     # We'll continue this example without doing so to keep the data stable
-
     # statement = tables.statement(id="your_statement_id")
-
     # result = statement.run(params={"email": personal_email, "created_at": start_date, "position": position,\
     #                                "birth_date": birth_date, "phone_number": phone_number, "identification_number": id_number,\
     #                                "id_emited_by": id_emited_by, "taxpayer_id": id_taxpayer, "company_email": company_email,\
@@ -174,7 +166,6 @@ elif registration == "update_member":
     # bank_statement = tables.statement(id="your_statement_id")
     # bank_statement.run(params={"name": bank_name, "number": bank_account_number,\
     #                                 "branch_code": bank_branch_code, "team_member_id": team_member_id})
-
 
     # entity_statement = tables.statement(id="your_statement_id")
     # entity_statement.run(params={"entity_number": legal_entity_number, "name": name_company,\
