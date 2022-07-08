@@ -63,4 +63,4 @@ input_data = list(zip(values, currencies, preprocessing_dates))
 #     result = statement.run(params={"value": value, "currency":currency,\
 #                                 "created_at": savings_date})
 
-display("All your savings income info has been inputed. Simple as that", button_text = "Amazing")
+display("All your savings income info has been inputed. Simple as that.", button_text = "Amazing!")
