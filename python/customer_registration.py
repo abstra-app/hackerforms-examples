@@ -12,15 +12,8 @@ from hackerforms import *
 from abstra import *
 from datetime import datetime
 
-if not 'DB_TOKEN' in os.environ:
-    Page().display("Hmmm seems like you forgot to set your API key. An error will appear on the log tab.") \
-          .display_link("www.abstracloud.com/examples/customer-registration", link_text="Click here to see the working example") \
-          .run("Next")
-    raise ValueError("Try adding your API key for this script to work")
-    exit()
-
 # This form uses an environment variable. To make it work properly, add an API Key to your workspace's environment variables in the sidebar.
-tables = Tables(api_key=os.environ.get("DB_TOKEN"))
+tables = Tables(api_key=os.environ.get("TABLES_ERP_TOKEN"))
 
 def preprocessing_date(date):
     if date != None:
@@ -63,16 +56,20 @@ if registration == "first_time":
 
     payment_frequency, payment_method = replace_empty_list([payment_frequency,payment_method])
 
-    statement = tables.statement(id="YOUR_CREATE_QUERY_ID")
+    # Here you'll need to set your database's query statement in order to properly update it
+    # We'll continue this example without doing so to keep the data stable
 
-    result = statement.run(params={"name":name, "email":email, "legal_entity": legal_entity, "payment_frequency": payment_frequency,\
-                                    "payment_method": payment_method,\
-                                    "country": country, "created_at":created_data})
+    # statement = tables.statement(id="your_statement_id")
+
+    # result = statement.run(params={"name":name, "email":email, "legal_entity": legal_entity, "payment_frequency": payment_frequency,\
+    #                                 "payment_method": payment_method,\
+    #                                 "country": country, "created_at":created_data})
+
     display("Perfecto. Your new customer has been registered 😎", button_text = "See you next time")
     
 
 else:
-    customers = convert_db_to_dropdown_format("name", "id", "YOUR_FILTER_QUERY_ID")
+    customers = convert_db_to_dropdown_format("name", "id", "f3bd4d41-e9f5-4cf2-926d-842f9eaa893f")
         
     customer_id = read_dropdown("Which customer do you want to update data", customers)
 
@@ -92,10 +89,14 @@ else:
     churn_date = preprocessing_date(churn_date)
     payment_frequency, payment_method = replace_empty_list([payment_frequency,payment_method])
 
-    statement = tables.statement(id="YOUR_UPDATE_QUERY_ID")
+    # Here you'll need to set your database's query statement in order to properly update it
+    # We'll continue this example without doing so to keep the data stable
 
-    result = statement.run(params={"customer_id": customer_id,"name":name, "email":email,\
-                                   "legal_entity": legal_entity,"payment_frequency": payment_frequency,\
-                                   "payment_method": payment_method,\
-                                   "country": country,  "churn_at":churn_date})
+    # statement = tables.statement(id="your_statement_id")
+
+    # result = statement.run(params={"customer_id": customer_id,"name":name, "email":email,\
+    #                                "legal_entity": legal_entity,"payment_frequency": payment_frequency,\
+    #                                "payment_method": payment_method,\
+    #                                "country": country,  "churn_at":churn_date})
+    
     display("Great! The customer's data has been updated in your database.", button_text = "See you next time")
