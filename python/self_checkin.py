@@ -185,41 +185,43 @@ while terms_accepted == False:
     else:
         terms_accepted = False
 
-# mandar response pro airtable
-head = {'Authorization': 'Bearer ' + api_key,
-        "Content-Type": "application/json"}
-data = {"records": [
-    {
-        "fields": {
-            "Name": name,
-            "Email": email,
-            "Birthdate": str(birthdate),
-            "Address": address,
-            "Phone": str(phone.masked),
-            "ID_type": str(id_type),
-            "ID_number": str(id_number),
-            "ID_expiration": str(id_expiration),
-            "Weight": str(weight),
-            "Height": str(height),
-            "Under_care": str(under_care),
-            "Reason_under_care": str(reason_under_care),
-            "Hospitalized": str(hospitalized),
-            "Reason_hospitalized": str(reason_hospitalized),
-            "Medicated": str(medicated),
-            "Reason_medicated": str(reason_medicated),
-            "Diet": str(diet),
-            "Reason_diet": str(reason_diet),
-            "Smoker": str(smoker),
-            "Drinker": str(drinker),
-            "Pregnant_trying": str(pregnant_trying),
-            "Allergies": str(allergies),
-            "Allergies_other": str(allergies_other),
-            "Concerns": str(concerns),
-            "Country": str(country),
-            "City": str(city)
-        }}
-]}
-url = table_endpoint
-response = requests.post(url, json=data, headers=head)
+# Here you'll need to set your API key and endpoint in order to update your database
+# We'll continue this example without doing so to keep the data stable
+
+# head = {'Authorization': 'Bearer ' + api_key,
+#         "Content-Type": "application/json"}
+# data = {"records": [
+#     {
+#         "fields": {
+#             "Name": name,
+#             "Email": email,
+#             "Birthdate": str(birthdate),
+#             "Address": address,
+#             "Phone": str(phone.masked),
+#             "ID_type": str(id_type),
+#             "ID_number": str(id_number),
+#             "ID_expiration": str(id_expiration),
+#             "Weight": str(weight),
+#             "Height": str(height),
+#             "Under_care": str(under_care),
+#             "Reason_under_care": str(reason_under_care),
+#             "Hospitalized": str(hospitalized),
+#             "Reason_hospitalized": str(reason_hospitalized),
+#             "Medicated": str(medicated),
+#             "Reason_medicated": str(reason_medicated),
+#             "Diet": str(diet),
+#             "Reason_diet": str(reason_diet),
+#             "Smoker": str(smoker),
+#             "Drinker": str(drinker),
+#             "Pregnant_trying": str(pregnant_trying),
+#             "Allergies": str(allergies),
+#             "Allergies_other": str(allergies_other),
+#             "Concerns": str(concerns),
+#             "Country": str(country),
+#             "City": str(city)
+#         }}
+# ]}
+# url = table_endpoint
+# response = requests.post(url, json=data, headers=head)
 
 display(f"Thanks, {name}! You're checked in and ready to go.")

@@ -38,3 +38,5 @@ res = post(
         'Authorization': 'Bearer ' + token,
         'Content-type': 'application/json; charset=utf-8'
     })
+
+display("We've got your information, we'll get in contact soon! 😉")

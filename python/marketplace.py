@@ -58,22 +58,25 @@ def list_services():
         "What many available hours do you have per week?")
     skills = read_textarea("What are your main skills?")
 
-    endpoint = devs_endpoint
-    head = {"Authorization": "Bearer " + api_key,
-            "Content-Type": "application/json"}
-    info = {"records": [
-            {
-                "fields": {
-                    "Name": name,
-                    "Email address": email,
-                    "Seniority": seniority,
-                    "Hourly rate": rate,
-                    "Available hours per week": availability,
-                    "Skills": skills
-                }}],
-            "typecast": True
-            }
-    response = requests.post(url=endpoint, json=info, headers=head)
+    # Here you'll need to set your API key and endpoint in order to update your database
+    # We'll continue this example without doing so to keep the data stable
+
+    # endpoint = devs_endpoint
+    # head = {"Authorization": "Bearer " + api_key,
+    #         "Content-Type": "application/json"}
+    # info = {"records": [
+    #         {
+    #             "fields": {
+    #                 "Name": name,
+    #                 "Email address": email,
+    #                 "Seniority": seniority,
+    #                 "Hourly rate": rate,
+    #                 "Available hours per week": availability,
+    #                 "Skills": skills
+    #             }}],
+    #         "typecast": True
+    #         }
+    # response = requests.post(url=endpoint, json=info, headers=head)
 
     display(f"Perfect {name}, your services have been listed! Now anyone searching for a dev can find you in our Dev Board. I'm sure you'll receive a proposal in no time.",
             button_text="Woohoo!")
@@ -161,7 +164,6 @@ def list_job():
     display("Let's start by authenticating the email where you'd like to be reached.")
     auth_info = get_user()
     email = auth_info.email
-
     company_name = read("What is your company's name?")
     job_title = read("What is the job title?")
     seniority = read_dropdown("What is the seniority needed?", [
@@ -169,24 +171,27 @@ def list_job():
     rate = read_number("What is the hourly rate offered?")
     availability = read_number("How many hours are needed per week?")
     skills = read_textarea("What the main skills required?")
+    
+    # Here you'll need to set your API key and endpoint in order to update your database
+    # We'll continue this example without doing so to keep the data stable
 
-    endpoint = jobs_endpoint
-    head = {"Authorization": "Bearer " + api_key,
-            "Content-Type": "application/json"}
-    info = {"records": [
-            {
-                "fields": {
-                    "Company name": company_name,
-                    "Job title": job_title,
-                    "Email address": email,
-                    "Seniority needed": seniority,
-                    "Hourly rate": rate,
-                    "Hours needed per week": availability,
-                    "Skills required": skills
-                }}],
-            "typecast": True
-            }
-    response = requests.post(url=endpoint, json=info, headers=head)
+    # endpoint = jobs_endpoint
+    # head = {"Authorization": "Bearer " + api_key,
+    #         "Content-Type": "application/json"}
+    # info = {"records": [
+    #         {
+    #             "fields": {
+    #                 "Company name": company_name,
+    #                 "Job title": job_title,
+    #                 "Email address": email,
+    #                 "Seniority needed": seniority,
+    #                 "Hourly rate": rate,
+    #                 "Hours needed per week": availability,
+    #                 "Skills required": skills
+    #             }}],
+    #         "typecast": True
+    #         }
+    # response = requests.post(url=endpoint, json=info, headers=head)
 
     display("Perfect, your job offer has been listed! Now any qualified dev can find you in our Job Board. I'm sure you'll get a candidate in no time.",
             button_text="Woohoo!")
