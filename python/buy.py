@@ -28,15 +28,20 @@ name = read("Name")
 email = read_email('Email')
 company = read("Company name")
 
-res = post(
-    'https://slack.com/api/chat.postMessage',
-    json={
-        'channel': 'sales',
-        'text': name + ' (' + email + ') wants to buy the ' + plan + ' plan'
-    },
-    headers={
-        'Authorization': 'Bearer ' + token,
-        'Content-type': 'application/json; charset=utf-8'
-    })
+"""
+This is the quickest way you can avoid sending messages
+when someone on your company tests your script.
+"""
+if '@abstra.app' not in email:
+    res = post(
+        'https://slack.com/api/chat.postMessage',
+        json={
+            'channel': 'sales',
+            'text': name + ' (' + email + ') wants to buy the ' + plan + ' plan'
+        },
+        headers={
+            'Authorization': 'Bearer ' + token,
+            'Content-type': 'application/json; charset=utf-8'
+        })
 
 display("We've got your information, we'll get in contact soon! 😉")
