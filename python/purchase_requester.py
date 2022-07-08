@@ -33,7 +33,7 @@ id_department = read_multiple_choice("To which department does this expense belo
 # This form uses an environment variable. To make it work properly, add an API Key to your workspace's environment variables in the sidebar.
 key1 = os.environ['TABLES_PUR_GET_BUDGET']
 # get department budget from database
-department = requests.get(
+department = requests.post(
     f"https://tables.abstra.cloud/execute/{key1}",
     json={'iddepartment': int(id_department)}
 )
