@@ -17,10 +17,6 @@ from unidecode import unidecode
 from datetime import datetime
 import numpy as np
 
-Page().display("Quick tip: this example involves setting up API keys and sending files. Errors will occur if you don't.") \
-          .display_link("www.abstracloud.com/examples/input-savings-incomes", link_text="Click here to see the working example before continuing") \
-          .run("Next")
-
 def normalize_strings(text):
     norm_text = unidecode(text, "utf-8").lower().replace(" ", "_").replace("_$", "")
     return norm_text
@@ -56,14 +52,15 @@ preprocessing_dates = list(map(lambda x: preprocessing_datetime(x), dates))
 
 input_data = list(zip(values, currencies, preprocessing_dates))
 
+# Here you'll need to set your database's token and query statement in order to properly update it
+# We'll continue this example without doing so to keep the data stable
 
-# insert data in db
-tables = Tables(api_key=os.environ.get("DB_TOKEN"))
-statement = tables.statement(id="DB_ID")
+# tables = Tables(api_key=os.environ.get("DB_TOKEN"))
+# statement = tables.statement(id="DB_ID")
 
-for data in input_data:
-    value, currency, savings_date = data
-    result = statement.run(params={"value": value, "currency":currency,\
-                                "created_at": savings_date})
+# for data in input_data:
+#     value, currency, savings_date = data
+#     result = statement.run(params={"value": value, "currency":currency,\
+#                                 "created_at": savings_date})
 
 display("All your savings income info has been inputed. Simple as that", button_text = "Amazing")
