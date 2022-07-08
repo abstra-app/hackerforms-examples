@@ -25,7 +25,7 @@ id_assignor = read_multiple_choice("Please choose from the list of example assig
 # This form uses an environment variable. To make it work properly, add an API Key to your workspace's environment variables in the sidebar.
 key1 = os.environ['TABLES_INV_GET_ASSIGNOR_INFO']
 # get assignor info from db
-assignor = requests.get(
+assignor = requests.post(
     f"https://tables.abstra.cloud/execute/{key1}",
     json={'id_assignor': int(id_assignor)}
 )
@@ -66,7 +66,7 @@ r = relativedelta.relativedelta(end_date, today_date)
 key2 = os.environ['TABLES_INV_GET_SUPPLIER_INFO']
 
 # get supplier list from db
-suppliers = requests.get(
+suppliers = requests.post(
     f"https://tables.abstra.cloud/execute/{key2}").json()
 chosen_supplier = read_dropdown(
     "Choose a supplier from this list to calculate risk multiplier.",
@@ -82,7 +82,7 @@ chosen_supplier = read_dropdown(
 key3 = os.environ['TABLES_INF_GET_SUPPLIER_DETAILS']
 
 # get supplier details from selection
-new_supplier = requests.get(
+new_supplier = requests.post(
     f"https://tables.abstra.cloud/execute/{key3}",
     json={'id_supplier': chosen_supplier}
 )

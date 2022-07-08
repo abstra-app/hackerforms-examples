@@ -58,7 +58,7 @@ cities = []
 hed = {"Content-Type": "application/json"}
 data = {"country": country}
 url = 'https://countriesnow.space/api/v0.1/countries/cities'
-response = requests.post(url, json=data, headers=hed)
+response = requests.get(url, json=data, headers=hed)
 response = response.json()
 cities = response['data']
 
