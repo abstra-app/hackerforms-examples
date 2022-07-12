@@ -55,7 +55,7 @@ invoice_value = invoice["What is the total value of this invoice?"]
 invoice_due = invoice["When is this invoice due?"]
 
 # calculate interest MoM
-today = date.today()
+today = datetime.today()
 end_date = datetime.strptime(str(invoice_due), '%Y-%m-%d')
 today_date = datetime.strptime(str(today), '%Y-%m-%d')
 r = relativedelta.relativedelta(end_date, today_date)
