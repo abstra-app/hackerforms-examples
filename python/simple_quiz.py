@@ -22,9 +22,9 @@ else:
 display(
     f"Now that we're besties, let's do some math. I know right, nothing like math for a {feeling} day.", button_text="Talk nerdy to me")
 
-x = read("First up, set a value for x")
+x = read_number("First up, set a value for x")
 
-y = read("Cool, now set a value for y")
+y = read_number("Cool, now set a value for y")
 
 operation = read_multiple_choice(f"Interesting choices there, {you}. Now choose what you want me to do with x and y.", [
                                  "add", "subtract", "multiply", "divide"])
