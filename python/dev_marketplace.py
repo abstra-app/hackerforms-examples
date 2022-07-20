@@ -8,13 +8,6 @@ import requests
 import json
 import os
 
-if not 'AIRTABLE_MARKETPLACE_API_KEY' in os.environ:
-    Page().display("Hmmm seems like you forgot to set your API key. An error will appear on the log tab.") \
-          .display_link("https://www.abstracloud.com/examples/dev-marketplace", link_text="Click here to see the working example") \
-          .run("Next")
-    raise ValueError("Try adding your API key for this script to work")
-    exit()
-
 # This form uses an environment variable. To make it work properly, add an Airtable API Key to your workspace's environment variables in the sidebar.
 api_key = os.environ['AIRTABLE_MARKETPLACE_API_KEY']
 devs_endpoint = os.environ['AIRTABLE_MARKETPLACE_DEVS_URL']
